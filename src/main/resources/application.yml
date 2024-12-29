@@ -1,0 +1,60 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+
+
+
+spring:
+  application:
+    name:springsecurity
+
+  security:
+    user:
+      name: user
+      password: 1234
+
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3307/security?serverTimezone=Asia/Seoul
+#    username: cos
+#    password: cos1234
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/security?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+
+
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .mustache
+
+  jpa:
+    hibernate:
+      ddl-auto: none #create update none create-drop
+      naming:
+        # 스프링 Entity와 MySQL 테이블 필드간 필드명 작명 전략
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    format_sql: true
+    show-sql: true
+    use_sql_comment: true
+    hightlight_sql: true
+    #please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' 에러해결
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+logging:
+  level.org.hibernate:
+    SQL: DEBUG
+    orm.jdbc.bind: TRACE
